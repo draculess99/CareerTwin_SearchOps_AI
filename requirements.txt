@@ -1,0 +1,10 @@
+Flask>=3.0
+flask-cors>=4.0
+streamlit>=1.35
+requests>=2.31
+pandas>=2.0
+python-docx>=1.1
+pytest>=8.0
+beautifulsoup4>=4.12
+unstructured>=0.10
+google-genai>=0.2

@@ -1,0 +1,198 @@
+WILLIAM LOW — DAILY JOB SEARCH QUERIES
+
+Use these searches on LinkedIn Jobs, Indeed, ZipRecruiter, Dice, Built In Boston, Google Jobs, and company career pages.
+
+Recommended filters:
+- Date posted: Past 24 hours
+- Experience: Mid-Senior level
+- Employment type: Full-time
+- Location: Greater Boston, Massachusetts
+- Repeat selected searches for: Remote, United States
+- Optional exclusions:
+  NOT (intern OR internship OR entry-level OR sales OR recruiter)
+
+============================================================
+1. SUPPLY CHAIN, FORECASTING, AND OPERATIONS
+Use: Supply Chain Data Scientist ATS Resume
+============================================================
+
+Target jobs:
+Supply Chain Data Scientist
+Logistics Data Scientist
+Operations Data Scientist
+Forecasting Data Scientist
+Demand Forecasting Scientist
+Workforce Planning Data Scientist
+Capacity Planning Analyst
+Supply Chain Optimization Scientist
+Operations Research Scientist
+Business Intelligence Engineer
+Transportation Analytics Scientist
+
+Broad Supply Chain
+"Data Scientist" AND "supply chain"
+
+Supply Chain Data Science
+"Supply Chain Data Scientist"
+
+Forecasting
+"Forecasting" AND "Data Scientist"
+
+Workforce Planning
+"Workforce Planning" AND "Data Scientist"
+
+Capacity Planning
+"Capacity Planning" AND forecasting
+
+Fulfillment and Logistics
+fulfillment AND "Data Scientist"
+
+Optimization
+"Supply Chain Optimization"
+
+Business Intelligence
+"Business Intelligence" AND "supply chain"
+
+Transportation
+"Transportation Data Scientist"
+
+============================================================
+2. APPLIED AI AND MACHINE LEARNING
+Use: Applied AI and Machine Learning Engineer ATS Resume
+============================================================
+
+Target jobs:
+Applied AI Engineer
+Applied Machine Learning Engineer
+Machine Learning Engineer
+Generative AI Engineer
+LLM Engineer
+AI Solutions Engineer
+AI Solutions Architect
+Decision Intelligence Engineer
+Operational AI Engineer
+Agentic AI Engineer
+MLOps Engineer
+AI Technical Consultant
+
+Broad Applied AI
+"Machine Learning Engineer" OR "AI Engineer"
+
+Applied AI
+"Applied AI Engineer"
+
+Machine Learning Engineering
+"Machine Learning Engineer"
+
+Generative AI and LLMs
+"Generative AI Engineer" OR "LLM Engineer"
+
+AI Solutions Engineering
+"AI Solutions Engineer"
+
+AI Architecture
+"AI Solutions Architect"
+
+Decision Intelligence
+"Decision Intelligence" AND forecasting
+
+Operational AI
+"Operational AI" OR "AI Decision Systems"
+
+Agentic AI
+"Agentic AI Engineer" OR "AI Agent Engineer"
+
+MLOps / AI Platform
+"MLOps Engineer" OR "AI Platform Engineer"
+
+AI Consulting
+"AI Technical Consultant"
+
+Senior Software-to-AI Roles
+"Senior Software Engineer" AND "machine learning"
+
+============================================================
+3. HEALTHCARE AI AND HEALTHCARE OPERATIONS
+Use: Healthcare AI Engineer ATS Resume
+============================================================
+
+Target jobs:
+Healthcare AI Engineer
+Healthcare Data Scientist
+Healthcare Machine Learning Engineer
+Clinical Operations Data Scientist
+Healthcare Operations Data Scientist
+Patient Flow Analyst
+Hospital Capacity Planning Analyst
+Healthcare Workforce Analytics
+Prior Authorization Data Scientist
+Revenue Cycle Data Scientist
+Healthcare Solutions Architect
+Medical Device Data Scientist
+
+Broad Healthcare AI
+"Healthcare AI Engineer" OR "Healthcare Data Scientist"
+
+Healthcare AI Engineering
+"Healthcare AI Engineer"
+
+Healthcare Data Science
+"Healthcare Data Scientist"
+
+Healthcare Operations
+"Healthcare Operations Data Scientist"
+
+Patient Flow
+"Patient Flow" AND "Data Scientist"
+
+Capacity and Bed Management
+"Bed Management" AND analytics
+
+Emergency Department Staffing
+"Emergency Department" AND analytics
+
+Healthcare Workforce Analytics
+"Healthcare Workforce Analytics"
+
+Medical Supply Forecasting
+"Medical Supply" AND forecasting
+
+Prior Authorization
+"Prior Authorization" AND AI
+
+Revenue Cycle AI
+"Revenue Cycle" AND AI
+
+Healthcare Decision Support
+"Clinical Decision Support" AND AI
+
+Healthcare Solutions Architecture
+"Healthcare AI Solutions Architect"
+
+Medical Devices
+"Medical Device Data Scientist"
+
+============================================================
+FAST DAILY VERSION — RUN THESE FIRST
+============================================================
+
+SUPPLY CHAIN
+"Supply Chain Data Scientist"
+
+APPLIED AI
+"Applied AI Engineer" OR "Machine Learning Engineer"
+
+HEALTHCARE AI
+"Healthcare AI Engineer" OR "Healthcare Data Scientist"
+
+============================================================
+GOOGLE SEARCH EXAMPLES
+============================================================
+
+site:jobs.lever.co "Applied AI Engineer" "Boston"
+
+site:boards.greenhouse.io "Supply Chain Data Scientist" "Massachusetts"
+
+("Machine Learning Engineer" OR "Applied AI Engineer") ("Boston" OR "Remote") -intern -internship
+
+("Healthcare Data Scientist" OR "Healthcare AI Engineer") ("Boston" OR "Remote") -intern -internship

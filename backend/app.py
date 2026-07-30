@@ -297,9 +297,9 @@ def build_search_url(platform: str, query: str, location: str, remote: bool = Fa
     if platform == "google":
         gq = quote_plus(f"{query} jobs {loc_str}")
         return f"https://www.google.com/search?q={gq}"
-    if platform == "gemini":
+    if platform in ["gemini", "chatgpt"]:
         return f"https://www.google.com/search?q={quote_plus(query)}"
-    raise ValueError("Unsupported platform")
+    raise ValueError(f"Unsupported platform: {platform}")
 
 
 @app.get("/api/health")

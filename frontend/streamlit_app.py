@@ -4,6 +4,7 @@ import os
 import webbrowser
 from datetime import date
 from pathlib import Path
+import urllib.parse
 
 import pandas as pd
 import requests
@@ -140,7 +141,7 @@ with main_tabs[0]:
                             })
                             
                             if platform in ["gemini", "chatgpt"]:
-                                ai_url = "https://gemini.google.com/app" if platform == "gemini" else "https://chatgpt.com/"
+                                ai_url = "https://gemini.google.com/app" if platform == "gemini" else f"https://chatgpt.com/?q={urllib.parse.quote(query_to_send)}"
                                 ai_name = "Gemini" if platform == "gemini" else "ChatGPT"
                                 js_safe = query_to_send.replace('\\', '\\\\').replace('`', '\\`').replace('${', '\\${')
                                 html_code = f"""

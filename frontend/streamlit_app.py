@@ -157,10 +157,11 @@ with main_tabs[0]:
                                 <script>
                                 document.getElementById('copyBtn').addEventListener('click', function() {{
                                     navigator.clipboard.writeText(`{js_safe}`).then(() => {{
-                                        this.innerText = '✅ Copied!';
+                                        this.innerText = '✅ Copied! Opening...';
                                         this.style.backgroundColor = '#4CAF50';
                                         this.style.color = 'white';
                                         document.getElementById('aiLink').style.display = 'block';
+                                        window.open(document.getElementById('aiLink').href, '_blank');
                                     }}).catch(err => {{
                                         this.innerText = '❌ Failed to copy. Copy manually.';
                                         this.style.backgroundColor = '#ff4b4b';

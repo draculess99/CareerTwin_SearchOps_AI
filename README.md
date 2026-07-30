@@ -17,15 +17,7 @@ A Streamlit + Flask job-search command center tailored to William Low's three AT
 - Tracks saved jobs, applications, interviews, notes, and follow-up dates in SQLite.
 - Keeps a human in control and does not scrape or auto-apply.
 
-## Suggested product names
 
-- **CareerTwin SearchOps AI** — recommended; links directly to the existing CareerTwin brand.
-- **CareerTwin Job Command Center** — clear and recruiter-friendly.
-- **RoleRadar AI** — concise and marketable.
-- **JobVector AI** — technical and modern.
-- **CareerOps AI** — emphasizes workflow and execution.
-- **ApplyPilot AI** — approachable, but avoid implying automatic submission.
-- **TalentRoute AI** — emphasizes matching and direction.
 
 ## Windows quick start
 

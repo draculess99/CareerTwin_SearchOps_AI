@@ -5,10 +5,8 @@ set -e
 RENDER_PORT="${PORT:-8501}"
 
 echo "Starting Flask Backend on internal port 5050..."
-# Temporarily override PORT so the Flask backend binds to 5050 internally
-export PORT=5050
 export FLASK_DEBUG=0
-python backend/app.py &
+PORT=5050 python backend/app.py &
 API_PID=$!
 
 # Ensure the backend process is killed if the container exits

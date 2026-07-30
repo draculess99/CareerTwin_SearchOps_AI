@@ -114,7 +114,7 @@ with main_tabs[0]:
                         
                         if platform == "gemini":
                             loc_str = "Remote" if remote else selected_location
-                            gemini_prompt = f"Search for jobs matching this query: {q['query']} in {loc_str}. Return the results in a table with the following columns: Company Name, Job Description, URL (where to apply), Date Published, Expiry Date, Location, Percentage Match, and Chances of Success. Give me a table for the last 24 hours, a table for the last week."
+                            gemini_prompt = f"Search for jobs matching this query: {q['query']} in {loc_str}. Return the results in a table with the following columns: Company Name, Job Description, URL (where to apply), Date Published, Expiry Date, Location, Percentage Match, and Chances of Success. Give me a table for the last 24 hours, a table for the last week, a table for the last 2 weeks."
                             st.caption("Please modify the prompt if necessary:")
                             final_query = st.text_area("Gemini prompt", value=gemini_prompt, height=120, label_visibility="collapsed", key=f"query_input_{q['id']}")
                         else:
@@ -197,7 +197,7 @@ with main_tabs[0]:
                         query_to_send = custom_query
                         if platform == "gemini" and not custom_query.startswith("Search for jobs"):
                             loc_str = "Remote" if remote else selected_location
-                            query_to_send = f"Search for jobs matching this query: {custom_query} in {loc_str}. Return the results in a table with the following columns: Company Name, Job Description, URL (where to apply), Date Published, Expiry Date, Location, Percentage Match, and Chances of Success. Give me a table for the last 24 hours, a table for the last week."
+                            query_to_send = f"Search for jobs matching this query: {custom_query} in {loc_str}. Return the results in a table with the following columns: Company Name, Job Description, URL (where to apply), Date Published, Expiry Date, Location, Percentage Match, and Chances of Success. Give me a table for the last 24 hours, a table for the last week, a table for the last 2 weeks."
                             
                         result = api_post("/api/search-url", {
                             "platform": platform,

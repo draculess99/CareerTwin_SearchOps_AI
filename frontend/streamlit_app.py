@@ -108,22 +108,23 @@ with main_tabs[0]:
                 with st.container(border=True):
                     c1, c2 = st.columns([3, 1])
                     with c2:
-                        platform = st.selectbox("Platform", ["gemini", "linkedin", "indeed", "google"], key=f"platform_{q['id']}")
+                        platform = st.selectbox("Platform", ["gemini", "chatgpt", "linkedin", "indeed", "google"], key=f"platform_{q['id']}")
                     with c1:
                         st.markdown(f"**{q['name']}**")
                         
-                        if platform == "gemini":
+                        if platform in ["gemini", "chatgpt"]:
                             loc_str = "Remote" if remote else selected_location
+                            ai_name = "Gemini" if platform == "gemini" else "ChatGPT"
                             gemini_prompt = f"Search for jobs matching this query: {q['query']} in {loc_str}. Return the results in a table with the following columns: Company Name, Job Description, URL (where to apply), Date Published, Expiry Date, Location, and Chances of success on application. Give me a table for the last 24 hours, a table for the last week, a table for the last 2 weeks."
                             st.caption("Please modify the prompt if necessary:")
-                            final_query = st.text_area("Gemini prompt", value=gemini_prompt, height=120, label_visibility="collapsed", key=f"query_input_{q['id']}")
+                            final_query = st.text_area(f"{ai_name} prompt", value=gemini_prompt, height=120, label_visibility="collapsed", key=f"query_input_{q['id']}")
                         else:
                             final_query = st.text_area("Boolean query", value=q["query"], height=100, label_visibility="collapsed", key=f"query_input_{q['id']}")
                             
                         last = last_runs.get(q["id"])
                         st.caption(f"Last run: {last[:16].replace('T', ' ') if last else 'Never'}")
                     with c2:
-                        button_label = "Prepare Gemini Search" if platform == "gemini" else "Open search"
+                        button_label = f"Prepare {'Gemini' if platform == 'gemini' else 'ChatGPT'} Search" if platform in ["gemini", "chatgpt"] else "Open search"
                         if st.button(button_label, key=f"open_{q['id']}", use_container_width=True):
                             query_to_send = st.session_state.get(f"query_input_{q['id']}", final_query)
                                 
@@ -138,16 +139,18 @@ with main_tabs[0]:
                                 "location": "Remote" if remote else selected_location,
                             })
                             
-                            if platform == "gemini":
+                            if platform in ["gemini", "chatgpt"]:
+                                ai_url = "https://gemini.google.com/app" if platform == "gemini" else "https://chatgpt.com/"
+                                ai_name = "Gemini" if platform == "gemini" else "ChatGPT"
                                 js_safe = query_to_send.replace('\\', '\\\\').replace('`', '\\`').replace('${', '\\${')
                                 html_code = f"""
                                 <div style="display: flex; flex-direction: column; gap: 10px; font-family: sans-serif; margin: 0; padding: 2px;">
                                     <button id="copyBtn" style="padding: 0.5rem 1rem; border-radius: 0.5rem; border: 1px solid #dcdde1; cursor: pointer; background: white; font-size: 1rem; transition: all 0.2s;">
                                         📋 Click to Copy Prompt
                                     </button>
-                                    <a id="geminiLink" href="https://gemini.google.com/app" target="_blank" 
+                                    <a id="aiLink" href="{ai_url}" target="_blank" 
                                        style="display: none; padding: 0.5rem 1rem; border-radius: 0.5rem; border: 1px solid #dcdde1; cursor: pointer; background: #f8f9fa; text-align: center; text-decoration: none; color: #31333F; font-size: 1rem;">
-                                        Go to Gemini
+                                        Go to {ai_name}
                                     </a>
                                 </div>
                                 <script>
@@ -156,12 +159,12 @@ with main_tabs[0]:
                                         this.innerText = '✅ Copied!';
                                         this.style.backgroundColor = '#4CAF50';
                                         this.style.color = 'white';
-                                        document.getElementById('geminiLink').style.display = 'block';
+                                        document.getElementById('aiLink').style.display = 'block';
                                     }}).catch(err => {{
                                         this.innerText = '❌ Failed to copy. Copy manually.';
                                         this.style.backgroundColor = '#ff4b4b';
                                         this.style.color = 'white';
-                                        document.getElementById('geminiLink').style.display = 'block';
+                                        document.getElementById('aiLink').style.display = 'block';
                                     }});
                                 }});
                                 </script>
@@ -183,19 +186,19 @@ with main_tabs[0]:
         with st.container(border=True):
             c1, c2 = st.columns([3, 1])
             with c2:
-                platform = st.selectbox("Platform", ["gemini", "linkedin", "indeed", "google"], key="platform_custom")
+                platform = st.selectbox("Platform", ["gemini", "chatgpt", "linkedin", "indeed", "google"], key="platform_custom")
             with c1:
                 st.markdown("**Custom Application**")
-                if platform == "gemini":
+                if platform in ["gemini", "chatgpt"]:
                     st.caption("Please modify the prompt if necessary:")
                 custom_query = st.text_area("Enter your Boolean query", key="custom_query_input", height=100)
 
             with c2:
-                button_label = "Prepare Gemini Search" if platform == "gemini" else "Open search"
+                button_label = f"Prepare {'Gemini' if platform == 'gemini' else 'ChatGPT'} Search" if platform in ["gemini", "chatgpt"] else "Open search"
                 if st.button(button_label, key="open_custom", use_container_width=True):
                     if custom_query.strip():
                         query_to_send = custom_query
-                        if platform == "gemini" and not custom_query.startswith("Search for jobs"):
+                        if platform in ["gemini", "chatgpt"] and not custom_query.startswith("Search for jobs"):
                             loc_str = "Remote" if remote else selected_location
                             query_to_send = f"Search for jobs matching this query: {custom_query} in {loc_str}. Return the results in a table with the following columns: Company Name, Job Description, URL (where to apply), Date Published, Expiry Date, Location, and Chances of success on application. Give me a table for the last 24 hours, a table for the last week, a table for the last 2 weeks."
                             

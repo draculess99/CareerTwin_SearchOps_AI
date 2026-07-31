@@ -13,6 +13,9 @@ from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 from docx import Document
 from pydantic import BaseModel
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 DATA_DIR = BASE_DIR / "data"

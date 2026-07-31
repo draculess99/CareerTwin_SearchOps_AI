@@ -84,7 +84,7 @@ with st.sidebar:
     st.subheader("Recommended daily load")
     st.write("3 Supply Chain · 3 Applied AI · 2 Healthcare AI")
 
-main_tabs = st.tabs(["Daily Search", "Job Analyzer", "Application Tracker", "Resumes", "About"])
+main_tabs = st.tabs(["Daily Search", "Job Analyzer", "Application Tracker", "Resumes", "Gemini Prompt", "About"])
 
 with main_tabs[0]:
     st.subheader("Today's search launcher")
@@ -356,8 +356,23 @@ with main_tabs[3]:
             st.link_button("Download from local API", f"{API_URL}/api/resumes/{item['resume']}")
 
 with main_tabs[4]:
+    st.subheader("Gemini Prompt Tester")
+    prompt_input = st.text_area("Enter prompt for Gemini", height=150, key="gemini_prompt_input")
+    if st.button("Send to Gemini", key="gemini_send_button"):
+        if prompt_input.strip():
+            try:
+                result = api_post("/api/gemini-prompt", {"prompt": prompt_input})
+                st.success("Gemini response:")
+                st.text_area("Result", value=result.get("response", ""), height=200, key="gemini_result")
+            except Exception as e:
+                st.error(f"Error calling Gemini: {e}")
+                st.text_area("Error details", value=str(e), height=200, key="gemini_error")
+        else:
+            st.warning("Please enter a prompt before sending.")
+
+with main_tabs[5]:
     st.subheader("What this app buys you")
-    st.markdown("""
+    st.markdown(""" 
 - One dashboard for three career tracks.
 - A manageable daily rotation instead of dozens of disconnected Boolean searches.
 - One-click launchers for LinkedIn, Indeed, and Google.

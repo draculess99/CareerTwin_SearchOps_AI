@@ -15,7 +15,10 @@ from docx import Document
 from pydantic import BaseModel
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)
+# Ensure the google-genai library uses the .env key, not a stale system env var
+os.environ.pop("GOOGLE_API_KEY", None)
+os.environ["GOOGLE_API_KEY"] = os.getenv("GEMINI_API_KEY", "")
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 DATA_DIR = BASE_DIR / "data"
@@ -244,7 +247,7 @@ def analyze_job(description: str) -> dict[str, Any]:
         """
         
         response = client.models.generate_content(
-            model='gemini-2.5-flash',
+            model='gemini-3-flash-preview',
             contents=prompt,
             config={
                 'response_mime_type': 'application/json',
@@ -362,13 +365,33 @@ def search_gemini():
         
         # Enable Google Search grounding
         response = client.models.generate_content(
-            model='gemini-2.5-flash',
+            model='gemini-3-flash-preview',
             contents=prompt,
             config={'tools': [{"googleSearch": {}}]}
         )
         return jsonify({"result": response.text})
     except Exception as e:
         print(f"Gemini API Search Error: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.post("/api/gemini-prompt")
+def gemini_prompt():
+    p = request.get_json(force=True)
+    prompt = p.get("prompt", "")
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        return jsonify({"error": "GEMINI_API_KEY not set in backend."}), 400
+    try:
+        from google import genai
+        client = genai.Client(api_key=api_key)
+        response = client.models.generate_content(
+            model='gemini-3-flash-preview',
+            contents=prompt,
+        )
+        return jsonify({"result": response.text})
+    except Exception as e:
+        print(f"Gemini API Error: {e}")
         return jsonify({"error": str(e)}), 500
 
 

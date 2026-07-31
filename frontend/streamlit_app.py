@@ -363,7 +363,7 @@ with main_tabs[4]:
             try:
                 result = api_post("/api/gemini-prompt", {"prompt": prompt_input})
                 st.success("Gemini response:")
-                st.text_area("Result", value=result.get("response", ""), height=200, key="gemini_result")
+                st.text_area("Result", value=result.get("result", ""), height=200, key="gemini_result")
             except Exception as e:
                 st.error(f"Error calling Gemini: {e}")
                 st.text_area("Error details", value=str(e), height=200, key="gemini_error")
